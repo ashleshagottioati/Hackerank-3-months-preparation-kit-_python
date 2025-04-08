@@ -1,0 +1,28 @@
+
+def balancedSums(arr):
+    if len(arr) == 1:
+        return "YES"
+    s = 0
+    t = sum(arr)
+    for i in arr:
+        t -= i
+        if s == t:
+            return "YES"
+        s += i
+    return "NO"
+
+# Input processing
+def main():
+    test_cases = int(input())
+    results = []
+
+    for _ in range(test_cases):
+        n = int(input())  # This is the size of the array, not used in calculation
+        arr = list(map(int, input().split()))
+        result = balancedSums(arr)
+        results.append(result)
+    
+    for result in results:
+        print(result)
+
+main()
