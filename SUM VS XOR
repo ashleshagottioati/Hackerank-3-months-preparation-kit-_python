@@ -1,0 +1,19 @@
+import sys
+
+def bitLen(int_type):
+    length = 0
+    while (int_type):
+        int_type >>= 1
+        length += 1
+    return(length)
+
+n = int(input().strip())
+st = '{0:b}'.format(n)
+elev = 0
+#print(st)
+for v in st:
+    if(v == '0'):
+        elev += 1
+if(n == 0):
+    elev -= 1
+print(1<<elev)
