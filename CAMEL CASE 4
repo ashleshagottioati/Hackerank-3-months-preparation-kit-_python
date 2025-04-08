@@ -1,0 +1,58 @@
+import re
+import sys
+userInput = []
+
+for line in sys.stdin.readlines():
+    userInput.append(line.rstrip('\r\n'))
+
+def Converter(s):
+    if s[0] == 'S':
+        if s[2] == 'V':
+            a = s[4:]
+            ls = [i for i in re.split("([A-Z][^A-Z]*)", a) if i]
+            b = ' '.join(ls).lower()
+            return(b)
+        elif s[2] == 'C':
+            a = s[4:]
+            ls = [i for i in re.split("([A-Z][^A-Z]*)", a) if i]
+            b = ' '.join(ls).lower()
+            return(b)
+        elif s[2] == 'M':
+            a = s[4:]
+            ls = [i for i in re.split("([A-Z][^A-Z]*)", a) if i]
+            b = ' '.join(ls).lower()
+            return(b[:-2])
+        else:
+            return("Wrong input")
+
+    elif s[0] == 'C':
+        if s[2] == 'V':
+            a = s[4:]
+            b= a.split(' ')
+            for i in range(1,len(b)):
+                b[i] = b[i].title()
+            
+            b= ''.join(b)
+            return(b)
+        elif s[2] == 'C':
+            a= s[4:]
+            b= a.split(' ')
+            for i in range(len(b)):
+                b[i] = b[i].title()
+            b = ''.join(b)
+            return(b)
+        elif s[2] == 'M':
+            a=s[4:]
+            b = a.split(' ')
+            for i in range(1,len(b)):
+                b[i] = b[i].title()
+            b = ''.join(b)
+
+            return(b + '()')
+        else:
+            return("invalid input")        
+
+    
+for i in userInput:
+    result = Converter(i)
+    print(result)
