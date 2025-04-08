@@ -1,0 +1,8 @@
+import re
+inp=input().strip()
+regex=re.compile(r'(\D)(\1)',re.M|re.I)
+search=regex.search(inp)
+while search:
+    inp=inp.replace(search.group(),'')
+    search=regex.search(inp)
+print(inp if inp else 'Empty String')
